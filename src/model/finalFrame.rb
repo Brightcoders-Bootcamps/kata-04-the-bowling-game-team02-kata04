@@ -6,8 +6,8 @@ require_relative 'frame'
 class FrameFinal < Frame
   attr_accessor :third_throw, :is_third_throw
 
-  def initialize(scoreboard)
-    super(scoreboard)
+  def initialize(scoreboard, index)
+    super(scoreboard, index)
     @third_throw = 0
     @is_third_throw = false
   end
@@ -48,7 +48,7 @@ class FrameFinal < Frame
   end
 
   def score_with_bonus
-    3
+    @total =score
   end
 
   def to_s

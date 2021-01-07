@@ -4,8 +4,8 @@ require_relative 'frame'
 
 # The Frame class models a frame from the bowling game
 class PenultimateFrame < Frame
-  def initialize(scoreboard)
-    super(scoreboard)
+  def initialize(scoreboard, index)
+    super(scoreboard, index)
   end
 
   def score
@@ -13,7 +13,13 @@ class PenultimateFrame < Frame
   end
 
   def score_with_bonus
-    2
+    @total = if is_strike
+               score + @scoreboard[@index + 1].first_throw + @scoreboard[@index + 1].second_throw
+             elsif is_spare
+               score + @scoreboard[@index + 1].first_throw
+             else
+               score
+             end
   end
 
   def to_s

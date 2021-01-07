@@ -12,17 +12,27 @@ class Scoreboard
   def initialize
     @frames = []
     @state = 1
+    @total_score = 0
     init_scoreboard
   end
 
   def init_scoreboard
-    8.times { @frames << Frame.new(@frames) }
-    @frames << PenultimateFrame.new(@frames)
-    @frames << FrameFinal.new(@frames)
+    (0..7).each { |index| @frames << Frame.new(@frames, index) }
+    @frames << PenultimateFrame.new(@frames, 8)
+    @frames << FrameFinal.new(@frames, 9)
   end
 
   def next
     @state += 1
+  end
+
+  def calculate_bonus
+    @total_score = 0
+    @frames.each do |frame|
+      frame.score_with_bonus
+      @total_score += frame.total
+      frame.total = @total_score
+    end
   end
 
   def print
@@ -31,7 +41,7 @@ class Scoreboard
     (0..9).each do |index|
       frame = @frames[index]
       scores << frame.score_to_s
-      scores_with_bonus << frame.score_with_bonus
+      scores_with_bonus << frame.total
     end
     rows << scores
     rows << scores_with_bonus

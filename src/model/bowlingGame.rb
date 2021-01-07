@@ -15,6 +15,7 @@ class BowlingGame
   def play(bowling_pins)
     final_game(bowling_pins) if @state == 9
     throw_bowling_ball(bowling_pins) if @state < 9
+    @scoreboard.calculate_bonus
     @scoreboard.print
   end
 
