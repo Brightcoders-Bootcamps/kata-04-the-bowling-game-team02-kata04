@@ -13,7 +13,7 @@ class BowlingGame
   end
 
   def play(bowling_pins)
-    puts('GAME OVER') if @is_game_over
+    return puts('GAME OVER') if @is_game_over
 
     if @state < 9
       throw_bowling_ball(bowling_pins)

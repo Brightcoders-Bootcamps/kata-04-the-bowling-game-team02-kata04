@@ -51,7 +51,6 @@ class Scoreboard
   end
 
   def print_table(rows, state)
-    puts(@frames)
     table_score = Terminal::Table.new title: "Bowling Game #{state}", rows: rows
     table_score.style = { alignment: :center }
     puts(table_score)
