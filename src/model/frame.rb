@@ -19,21 +19,12 @@ class Frame
   def first_roll(bowling_pins)
     @first_throw = bowling_pins
     @is_first_throw = false
+    @is_strike = true if bowling_pins == 10
   end
 
   def second_roll(bowling_pins)
     @second_throw = bowling_pins
-  end
-
-  def spare(bowling_pins)
-    @second_throw = bowling_pins
-    @is_spare = true
-  end
-
-  def strike(bowling_pins)
-    @first_throw = bowling_pins
-    @is_first_throw = false
-    @is_strike = true
+    @is_spare = true if (first_throw + bowling_pins) == 10
   end
 
   def score

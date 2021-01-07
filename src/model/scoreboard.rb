@@ -7,11 +7,10 @@ require 'terminal-table'
 
 # The FrameFinal class models a frame 10th from the bowling game
 class Scoreboard
-  attr_reader :frames, :state
+  attr_reader :frames
 
   def initialize
     @frames = []
-    @state = 1
     @total_score = 0
     init_scoreboard
   end
@@ -35,9 +34,9 @@ class Scoreboard
     end
   end
 
-  def print
+  def print(state)
     rows = create_rows
-    print_table(rows)
+    print_table(rows, state)
   end
 
   def create_rows
@@ -51,8 +50,9 @@ class Scoreboard
     rows << scores_with_bonus
   end
 
-  def print_table(rows)
-    table_score = Terminal::Table.new title: "Bowling Game #{@state}", rows: rows
+  def print_table(rows, state)
+    puts(@frames)
+    table_score = Terminal::Table.new title: "Bowling Game #{state}", rows: rows
     table_score.style = { alignment: :center }
     puts(table_score)
   end
