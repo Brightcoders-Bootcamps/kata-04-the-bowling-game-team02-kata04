@@ -13,13 +13,23 @@ class PenultimateFrame < Frame
   end
 
   def score_with_bonus
-    @total = if is_strike
-               score + @scoreboard[@index + 1].first_throw + @scoreboard[@index + 1].second_throw
-             elsif is_spare
-               score + @scoreboard[@index + 1].first_throw
-             else
-               score
-             end
+    if is_strike
+      calculate_bonus_strike
+    elsif is_spare
+      calculate_bonus_spare
+    else
+      @total = score
+    end
+  end
+
+  def calculate_bonus_strike
+    next_one = @scoreboard[@index + 1]
+    @total = score + next_one.first_throw + next_one.second_throw
+  end
+
+  def calculate_bonus_spare
+    next_one = @scoreboard[@index + 1]
+    @total = score + next_one.first_throw
   end
 
   def to_s

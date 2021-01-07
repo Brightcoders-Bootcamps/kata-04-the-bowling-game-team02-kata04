@@ -48,12 +48,21 @@ class Frame
 
   def score_with_bonus
     if is_strike
-      @total = @scoreboard[@index + 1].is_strike ? score + @scoreboard[@index + 1].first_throw + @scoreboard[@index + 2].first_throw : @scoreboard[@index + 1].score
+      calculate_bonus_strike
     elsif is_spare
-      @total = score + @scoreboard[@index + 1].first_throw
+      calculate_bonus_spare
     else
-      @total = + score
+      @total = score
     end
+  end
+
+  def calculate_bonus_strike
+    next_one = @scoreboard[@index + 1]; next_two = @scoreboard[@index + 2]
+    @total = next_one.is_strike ? score + next_one.first_throw + next_two.first_throw : next_one.score
+  end
+
+  def calculate_bonus_spare
+    @total = score + @scoreboard[@index + 1].first_throw
   end
 
   def to_s

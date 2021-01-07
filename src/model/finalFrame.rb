@@ -48,7 +48,7 @@ class FrameFinal < Frame
   end
 
   def score_with_bonus
-    @total =score
+    @total = score
   end
 
   def to_s
