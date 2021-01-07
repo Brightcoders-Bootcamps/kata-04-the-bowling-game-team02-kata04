@@ -36,18 +36,24 @@ class Scoreboard
   end
 
   def print
+    rows = create_rows
+    print_table(rows)
+  end
+
+  def create_rows
     rows = []; scores = []; scores_with_bonus = []
     rows << (1..10).to_a
-    (0..9).each do |index|
-      frame = @frames[index]
+    @frames.each do |frame|
       scores << frame.score_to_s
       scores_with_bonus << frame.total
     end
     rows << scores
     rows << scores_with_bonus
-    table = Terminal::Table.new title: "Bowling Game #{@state}", rows: rows
-    table.style = { alignment: :center }
-    puts(table)
-    puts
+  end
+
+  def print_table(rows)
+    table_score = Terminal::Table.new title: "Bowling Game #{@state}", rows: rows
+    table_score.style = { alignment: :center }
+    puts(table_score)
   end
 end
