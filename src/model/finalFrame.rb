@@ -50,8 +50,4 @@ class FrameFinal < Frame
   def score_with_bonus
     @total = score
   end
-
-  def to_s
-    "first_throw: #{@first_throw}, second_throw: #{@second_throw}, thrid_throw: #{@third_throw}, is_strike: #{@is_strike}, is_spare: #{@is_spare}, is_first_throw: #{@is_first_throw}, is_third_therow: #{@is_third_throw}, score: #{score}"
-  end
 end

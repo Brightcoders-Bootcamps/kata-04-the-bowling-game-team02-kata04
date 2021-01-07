@@ -31,8 +31,4 @@ class PenultimateFrame < Frame
     next_one = @scoreboard[@index + 1]
     @total = score + next_one.first_throw
   end
-
-  def to_s
-    "first_throw: #{@first_throw}, second_throw: #{@second_throw} is_strike: #{@is_strike}, is_spare: #{@is_spare}, is_first_throw: #{@is_first_throw} score: #{score}"
-  end
 end

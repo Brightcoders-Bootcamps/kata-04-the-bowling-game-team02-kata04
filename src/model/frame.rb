@@ -55,8 +55,4 @@ class Frame
   def calculate_bonus_spare
     @total = score + @scoreboard[@index + 1].first_throw
   end
-
-  def to_s
-    "first_throw: #{@first_throw}, second_throw: #{@second_throw} is_strike: #{@is_strike}, is_spare: #{@is_spare}, is_first_throw: #{@is_first_throw} score: #{score}"
-  end
 end
