@@ -10,3 +10,4 @@ gem 'terminal-table'
 gem "rubycritic", require: false
 gem 'rake'
 gem 'rubycritic-small-badge', :require => false
+gem 'sandi_meter'

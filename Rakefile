@@ -27,4 +27,8 @@ task :spec_tests do
   system 'rspec  spec/model/*.rb --format doc'
 end
 
-task default: %w[source test spec_tests]
+task :sandi_meter do
+  system '(cd src) -and (sandi_meter --graph -o ../sandi_meter)'
+end
+
+task default: %w[sandi_meter]
