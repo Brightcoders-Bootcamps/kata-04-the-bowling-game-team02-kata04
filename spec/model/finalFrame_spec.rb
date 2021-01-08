@@ -25,7 +25,7 @@ describe FrameFinal do
     it 'describe when a user throws the second bowling ball of the round' do
       @frame_final.first_roll(2)
       @frame_final.second_roll(8)
-      expect(frame_final.second_throw).to eql(8)
+      expect(@frame_final.second_throw).to eql(8)
       expect(@frame_final.is_spare).to eql(true)
     end
   end
@@ -35,7 +35,7 @@ describe FrameFinal do
       @frame_final.first_roll(2)
       @frame_final.second_roll(8)
       @frame_final.third_roll(8)
-      expect(@frame[9].third_throw).to eql(8)
+      expect(@frame_final.third_throw).to eql(8)
     end
   end
 
@@ -43,7 +43,7 @@ describe FrameFinal do
     it "returns the sum of the frame's score" do
       @frame_final.first_roll(2)
       @frame_final.second_roll(2)
-      expect(@frame[9].score).to eql(4)
+      expect(@frame_final.score).to eql(4)
     end
   end
 
